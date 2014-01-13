@@ -17,7 +17,15 @@ make install
 echo "extension=geohash.so" >> /etc/php.ini
 
 ```
+
+
 ##eg:
+Geohash::decode(geohash string);
+
+Geohash::encode(latitude,longtitude);
+
+Geohash::encode(latitude,longtitude,precision=12);
+
 ```php
 <?php
 print_r( Geohash::decode("wm3yr31d2524") );
