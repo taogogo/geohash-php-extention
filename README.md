@@ -1,6 +1,6 @@
 geohash-php-extension
 =====
-##introduce
+## Introduce
 
 geohash is a php extension,it can convert between “longitude and latitude” and "geohash".
 
@@ -8,7 +8,7 @@ geohash是一个用于转换经纬度和geohash的php扩展。
 
 相似的代码，使用扩展进行转换的速度比使用纯php代码快10倍以上。
 
-##install:
+## Install:
 ```shell
 phpize
 ./configure 
@@ -19,7 +19,8 @@ echo "extension=geohash.so" >> /etc/php.ini
 ```
 
 
-##eg:
+## Example:
+
 Geohash::decode(geohash string);
 
 Geohash::encode(latitude,longtitude);
@@ -32,7 +33,8 @@ print_r( Geohash::decode("wm3yr31d2524") );
 print_r( Geohash::encode(30.635780068114,104.03160111979,12) );
 ?>
 ```
-##output:
+## output:
+
 ```php
 Array
 (
