@@ -54,6 +54,7 @@ PHP_METHOD(Geohash,decode);
 
 #endif	/* PHP_GEOHASH_H */
 
+#define GEOHASH_VERSION "1.0.1"
 
 /*
  * Local variables:

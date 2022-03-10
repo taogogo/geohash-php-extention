@@ -78,11 +78,11 @@ zend_class_entry *Geohash_ce;
  */
 PHP_MINIT_FUNCTION(geohash)
 {
-	REGISTER_STRING_CONSTANT("GEOHASH_VERSION", "0.1", CONST_CS | CONST_PERSISTENT);
+	REGISTER_STRING_CONSTANT("GEOHASH_VERSION", GEOHASH_VERSION, CONST_CS | CONST_PERSISTENT);
     //REGISTER_INI_ENTRIES();
 	zend_class_entry Geohash_entry;
 	INIT_CLASS_ENTRY(Geohash_entry, "Geohash", geohash_methods);
-    Geohash_ce = zend_register_internal_class_ex(&Geohash_entry, NULL, NULL TSRMLS_CC);//注册类
+    Geohash_ce = zend_register_internal_class_ex(&Geohash_entry, NULL);//注册类
     
     return SUCCESS;
 }
@@ -124,11 +124,9 @@ PHP_MINFO_FUNCTION(geohash)
 {
 	php_info_print_table_start();
 	php_info_print_table_header(2, "geohash(php geohash extension) support", "enabled");
-	//读取常量
-	zval geohash_version; 
-	if(zend_get_constant("GEOHASH_VERSION", sizeof("GEOHASH_VERSION")-1, &geohash_version TSRMLS_DC)){
-		php_info_print_table_row(2, "version", Z_STRVAL(geohash_version));
-	}
+
+	php_info_print_table_row(2, "version", GEOHASH_VERSION);
+
 	php_info_print_table_end();
 }
 /* }}} */
@@ -177,7 +175,7 @@ PHP_METHOD(Geohash, encode) {
 	}else{
 		precision=12;
 	}
-	RETVAL_STRING(geohash_encode(lat,lon,precision),1);
+	RETVAL_STRING(geohash_encode(lat,lon,precision));
 }
 
 /* }}} */
